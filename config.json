@@ -1,0 +1,111 @@
+{
+    "models": [
+        "gpt-3.5"
+    ],
+    "available_models": [
+        "gpt-3.5",
+        "gpt-4",
+        "gpt-4-turbo",
+        "llama-2-70b-chat",
+        "llama-2-13b-chat",
+        "llama-2-7b-chat",
+        "llama-13b-lora",
+        "llama-7b",
+        "wizardcoder-34b-v1.0",
+        "wizardcoder-15b-v1.0",
+        "codellama-13b-instruct",
+        "codellama-7b-instruct",
+        "palm-2"
+    ],
+
+    "question_types": [
+        "all"
+    ],
+    "available_question_types": [
+        "original",
+        "simplified",
+        "translated"
+    ],
+
+    "source_dir": "./data",
+    "output_dir": "./outputs",
+    "memory_dir": "./memory",
+    "save_as_cache": true,
+    "use_cache": false,
+    "self_validation": false,
+    "num_samples": 1,
+    "max_retry": 3,
+    "max_eval_time_s": 1000,
+
+    "metrics": {
+        "bleu": true,
+        "edit_distance": true,
+        "exact_match": true,
+        "kv_match": true,
+        "kv_wildcard": true,
+        "unit_test": false
+    },
+
+    "ray": {
+        "enable": true,
+        "num_cpus": 8
+    },
+
+    "multishot": {
+        "enable": false,
+        "nshots": 0
+    },
+
+    "chain_of_thought": {
+        "enable": false
+    },
+
+    "modes": [
+        "all"
+    ],
+    "available_modes": [
+        "pod",
+        "job",
+        "deployment",
+        "service",
+        "cronjob",
+        "replicaset",
+        "replicationcontroller",
+        "statefulset",
+        "ingress",
+        "configmap",
+        "persistentvolume",
+        "secret",
+        "resourcequota",
+        "limitrange",
+        "serviceaccount",
+        "role",
+        "daemonset",
+        "endpoint",
+        "horizontalpodautoscaler",
+        "extend",
+        "storageclass",
+        "policy",
+        "gateway",
+        "destinationrule",
+        "serviceentry",
+        "virtualservice",
+        "all"
+    ],
+
+    "libs": [
+        "all"
+    ],
+    "available_libs": [
+        "Kubernetes",
+        "Envoy",
+        "Istio"
+    ],
+
+    "problems_to_include": [
+        "all"
+    ],
+
+    "problems_to_exclude": [
+    ]
+}
