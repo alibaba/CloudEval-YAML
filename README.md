@@ -172,7 +172,7 @@ If you find this benchmark useful, please cite our paper:
 ```
 @article{xu2023practical,
   title={A Practical Benchmark for Cloud Native YAML Configuration Generation},
-  author={Yifei Xu, Yuning Chen, Xumiao Zhang, Xianshang Lin, Pan Hu, Yunfei Ma, Songwu Lu, Wan Du, Zhuoqing Mao, Ennan Zhai, Dennis Cai},
+  author={Yifei Xu, Yuning Chen, Xumiao Zhang, Xianshang Lin, Pan Hu, Yunfei Ma, Songwu Lu, Wan Du, Z. Morley Mao, Ennan Zhai, Dennis Cai},
   year={2023}
 }
 ```
