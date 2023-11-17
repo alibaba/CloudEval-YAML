@@ -4,3 +4,5 @@ ray
 nltk
 replicate
 google-generativeai
+pyyaml
+tqdm
