@@ -6,7 +6,7 @@
 
 📊 The table is generated with CloudEval-YAML, a practical Large Language Model (LLM) benchmark specifically designed for cloud-native application configuration generation. It comprises a comprehensive dataset of 1011 problems covering widely deployed applications including Kubernetes, Envoy and Istio. This benchmark is unique in its practical and realistic approach, featuring a combination of hand-written question contexts, reference YAML files, and unit test scripts for each problem. This benchmark can facilitate comparing different LLM models, as well as different sampling and prompt engineering techniques. 
 📄 Please refer to the following technical report for more detailed information:
-[*A Practical Benchmark for Cloud Native YAML Configuration Generation*](assets/cloudeval-yaml.pdf).
+[*CloudEval-YAML: A Practical Benchmark for Cloud Native YAML Configuration Generation*](assets/cloudeval-yaml.pdf).
 
 ## 🚀 Quick Start
 
@@ -171,7 +171,7 @@ Please refer to [Advanced.md](Advanced.md) for how to run your own model and oth
 If you find this benchmark useful, please cite our paper:
 ```
 @article{xu2023practical,
-  title={A Practical Benchmark for Cloud Native YAML Configuration Generation},
+  title={CloudEval-YAML: A Practical Benchmark for Cloud Native YAML Configuration Generation},
   author={Yifei Xu, Yuning Chen, Xumiao Zhang, Xianshang Lin, Pan Hu, Yunfei Ma, Songwu Lu, Wan Du, Z. Morley Mao, Ennan Zhai, Dennis Cai},
   year={2023}
 }
