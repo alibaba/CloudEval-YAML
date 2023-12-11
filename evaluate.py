@@ -11,7 +11,7 @@ import sys
 import random
 from tqdm import tqdm
 from metrics import bleu, edit_distance, exact_match, kv_match
-from metrics import kv_wildcard, unit_test
+from metrics import kv_wildcard, unit_test, unit_test_pred
 
 metric_map = {
     'bleu': bleu,
@@ -73,6 +73,9 @@ def evaluate(config):
                     else:
                         raise Exception(f'Unknown metric: {metric_name}')
                     scores_dict[metric_name].append(score)
+                elif metric_name == 'unit_test':
+                    # execute unit test prediction
+                    scores_dict['unit_test'].append(unit_test_pred.test(generated_code, reference_code))
                 else:
                     scores_dict[metric_name].append(-1)
         
@@ -101,6 +104,8 @@ def calc_scores(config):
                     scores = json.loads(loader.read_memory_problem(config, problem_key, f'{metric_name}_scores'))
                     problem_scores_summary += f'{metric_name} score: {sum(scores):.2f} / {config["num_samples"]}\n'
                     exp_scores[metric_name] += sum(scores)
+            elif metric_name == 'unit_test':
+                problem_scores_summary += f'{metric_name} score: {sum(scores):.2f} / {config["num_samples"]}\n'
         print(problem_scores_summary)
         loader.write_memory_problem(config, problem_key, f'scores_summary', problem_scores_summary)
 
@@ -114,7 +119,7 @@ def calc_exp_scores(config):
     # exp scores for calculation
     exp_scores = {}
     for metric_name in config['metrics'].keys():
-        if config['metrics'][metric_name]:
+        if config['metrics'][metric_name] or metric_name == 'unit_test':
             exp_scores[metric_name] = {
                 'numerator': 0,
                 'denominator': 0
@@ -127,7 +132,7 @@ def calc_exp_scores(config):
             category_name = f'{lib}_{mode}'
             category_scores[category_name] = {}
             for metric_name in config['metrics'].keys():
-                if config['metrics'][metric_name]:
+                if config['metrics'][metric_name] or metric_name == 'unit_test':
                     category_scores[category_name][metric_name] = {
                         'numerator': 0,
                         'denominator': 0
@@ -137,7 +142,7 @@ def calc_exp_scores(config):
     for problem_key in problem_keys:
         category_name = f"{problem_key.split('_')[0]}_{problem_key.split('_')[1]}"
         for metric_name in config['metrics'].keys():
-            if config['metrics'][metric_name]:
+            if config['metrics'][metric_name] or metric_name == 'unit_test':
                 if metric_name == 'unit_test' and not loader.read_memory_problem(config, problem_key, f'unit_test_code'):
                     pass
                 else:
@@ -154,7 +159,7 @@ def calc_exp_scores(config):
             category_exist = False
             category_scores_summary = f'------ Category: {category_name} ------\n'
             for metric_name in config['metrics'].keys():
-                if config['metrics'][metric_name]:
+                if config['metrics'][metric_name] or metric_name == 'unit_test':
                     numerator = category_scores[category_name][metric_name]["numerator"]
                     denominator = category_scores[category_name][metric_name]["denominator"]
                     category_scores_summary += f'{metric_name} score: {numerator:.2f} / {denominator}\n'
@@ -171,7 +176,7 @@ def calc_exp_scores(config):
     exp_scores_summary += f'Dataset: {config["question_type"]} ({len(problem_keys)} problems)\n'
     # exp_scores_summary += f'Number of problems: {len(problem_keys)}\n'
     for metric_name in config['metrics'].keys():
-        if config['metrics'][metric_name]:
+        if config['metrics'][metric_name] or metric_name == 'unit_test':
             numerator = exp_scores[metric_name]["numerator"]
             denominator = exp_scores[metric_name]["denominator"]
             normalized_numerator = numerator / denominator

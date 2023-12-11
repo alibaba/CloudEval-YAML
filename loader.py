@@ -207,11 +207,14 @@ def summarize_overall_scores(config, question_type_scores_list):
     overall_scores_summary += f"Dataset: {', '.join(config['question_types'])} ({question_num} problems)\n"
     
     for metric_name in config['metrics'].keys():
-        if config['metrics'][metric_name]:
+        if config['metrics'][metric_name] or metric_name == 'unit_test':
             numerator = sum([question_type_scores[metric_name]['numerator'] for question_type_scores in question_type_scores_list])
             denominator = sum([question_type_scores[metric_name]['denominator'] for question_type_scores in question_type_scores_list])
-            normalized_numerator = numerator / denominator
-            overall_scores_summary += f'{metric_name} score: {normalized_numerator:.3f}\n'
+            try:
+                normalized_numerator = numerator / denominator
+                overall_scores_summary += f'{metric_name} score: {normalized_numerator:.3f}\n'
+            except:
+                overall_scores_summary += f'{metric_name} score: N/A\n'
     print(overall_scores_summary)
     with open(f'{config["output_dir"]}/{config["model"]}_overall_scores_summary.txt', 'w') as f:
         f.write(overall_scores_summary)

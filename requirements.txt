@@ -6,3 +6,4 @@ replicate
 google-generativeai
 pyyaml
 tqdm
+xgboost
