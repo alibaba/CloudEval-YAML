@@ -216,6 +216,7 @@ def summarize_overall_scores(config, question_type_scores_list):
             except:
                 overall_scores_summary += f'{metric_name} score: N/A\n'
     print(overall_scores_summary)
+    os.makedirs(f'{config["output_dir"]}/', exist_ok=True)
     with open(f'{config["output_dir"]}/{config["model"]}_overall_scores_summary.txt', 'w') as f:
         f.write(overall_scores_summary)
         
@@ -231,6 +232,7 @@ def write_memory_problem(config, problem_key, file_key, content):
         context_dir = file_path.split('/')[:-1]
         context_dir = ''.join([f'{d}/' for d in context_dir])
         file_name = file_path.split('/')[-1]
+        os.makedirs(f'{output_dir}/', exist_ok=True)
         with open(f'{output_dir}/context_keys', 'a') as f:
             f.write(f'{file_key}\n')
     else:
