@@ -170,10 +170,12 @@ Please refer to [Advanced.md](Advanced.md) for how to run your own model and oth
 ## 📄 Citation
 If you find this benchmark useful, please cite our paper:
 ```
-@article{xu2023cloudeval,
+@article{xu2024cloudeval,
   title={CloudEval-YAML: A Practical Benchmark for Cloud Configuration Generation},
   author={Xu, Yifei and Chen, Yuning and Zhang, Xumiao and Lin, Xianshang and Hu, Pan and Ma, Yunfei and Lu, Songwu and Du, Wan and Mao, Zhuoqing and Zhai, Ennan and others},
-  journal={arXiv preprint arXiv:2401.06786},
-  year={2023}
+  journal={Proceedings of Machine Learning and Systems},
+  volume={6},
+  pages={173--195},
+  year={2024}
 }
 ```
