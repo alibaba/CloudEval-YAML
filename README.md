@@ -102,7 +102,7 @@ Install the python prerequisites
 
 
 ### Replicate
-[Replicate](https://replicate.com) is a platform that allow you to run open-source or your own models at scale in the cloud. It abstracts away the complexity of deploying models locally and provides a simple API for query and response.
+[Replicate](https://replicate.com) is a platform that allows you to run open-source or your own models at scale in the cloud. It abstracts away the complexity of deploying models locally and provides a simple API for query and response.
 
 * Configure Replicate API token
   ```bash
@@ -126,7 +126,7 @@ Install the python prerequisites
 
 ## 🏃 Run the Unit Tests
 
-The easiest way to run unit tests is to launch an AWS EC2 instance using public AMI with `cloudyaml_public` as name and `ami-012306c17129a3b71` as ID. Notice that this is going to take several hours to evaluate. Alternatively, one can create a pull request and we can help to run on a cluster.
+The easiest way to run unit tests is to launch an AWS EC2 instance using public AMI with `cloudyaml_public` as name and `ami-012306c17129a3b71` as ID in us-west-1 region (N. California). Notice that this is going to take several hours to evaluate. Alternatively, one can create a pull request and we can help to run on a cluster.
 
 After launching the EC2 instance, you can pull this repo and enable unit test in `config.json`
 
